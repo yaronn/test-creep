@@ -1,0 +1,26 @@
+{
+    "name": "test-select",
+    "version": "0.0.1",
+    "description": "Selective test execution",
+    "engines": { "node": ">=0.4.0" },
+    "author": "Yaron Naveh (yaronn01@gmail.com, http://webservices20.blogspot.com/)",
+    "dependencies": {
+        "execSync": ">=0.0.3",
+        "istanbul": ">=0.1.31"        
+     },
+     "peerDependencies": {
+         "mocha": ">=1.8.1"
+     },
+    "repository" : { 
+        "type":"git", 
+        "url":"https://github.com/yaronn/test-select.git" },
+    "main": "./selective.js",
+    "directories": { "lib": "./lib" },
+    "keywords": ["test", "testing", "selective test execution"],
+    "licenses": [{ 
+        "type" :  "MIT License",
+        "url" :   "http://www.opensource.org/licenses/mit-license.php" }],
+    "scripts":    {
+        "test": "./node_modules/mocha/bin/mocha tests.js ./test/tests.js"
+    }
+}
