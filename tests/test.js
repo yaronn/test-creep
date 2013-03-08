@@ -1,19 +1,52 @@
-require("../selective.js")
+var execSync = require('execSync');
+var fs = require('fs');
+var consts = require('../consts')
+var assert = require('assert')
 
-var a = require("./aut/a")
+describe('selective test execution', function(){  
+    it('should only run tests that depend on changed code', function(){
 
-describe('c', function(){  
-    it('should show a,b,c,e', function(){
-      a.a1()
+      var runTests = function() {
+         return execSync.stdout('./node_modules/mocha/bin/mocha ./tests/aut/aut_test.js')
+      }
+
+      process.env['gitstatus'] = ''
+
+      if (fs.existsSync(consts.depsFile)) {
+         fs.unlinkSync(consts.depsFile)
+      }
+
+      var results = runTests()
+      
+      assert(results.indexOf('3 tests complete')!=-1, 'expected all tests to run because deps file does not exist yet')
+      assert(fs.existsSync(consts.depsFile), 'expected ' + consts.depsFile + ' to exist')
+      var deps = fs.readFileSync(consts.depsFile)
+      assert.equal(deps
+         , '{"should show a,b,c,e":["tests/aut/a.js","tests/aut/b.js","tests/aut/c.js","tests/aut/e.js"],"should show a,b,c,e again":["tests/aut/a.js","tests/aut/b.js","tests/aut/c.js","tests/aut/e.js"],"should show a,b,d,e":["tests/aut/a.js","tests/aut/b.js","tests/aut/e.js","tests/aut/d.js"]}'
+         , 'deps file does not contain expected content')
+
+
+      results = runTests()
+
+      console.log('***')
+      console.log(results)
+      console.log('***')
+
+      assert(results.indexOf('0 tests complete')!=-1, 'expected no tests to run because no code changes have been made')
+
+
+      process.env['gitstatus'] = 'modified:   tests/aut/c.js'
+      
+      for (var i=0; i<2; i++) {
+         results = runTests()
+         assert(results.indexOf('2 tests complete')!=-1, 'expected no tests to run because no code changes have been made')
+      }
+
+      process.env['gitstatus'] = ''
+      results = runTests()
+      assert(results.indexOf('0 tests complete')!=-1, 'expected no tests to run because no code changes have been made')
+      
     }) 
 
-    it('should show a,b,c,e again', function(){
-      a.a1()
-    })   
 })
 
-describe('d', function(){  
-    it('should show a,b,d,e', function(){
-      a.a2()
-    })  
-})

@@ -2,11 +2,11 @@ var fs = require('fs')
 var path = require('path')
 var execSync = require('execSync');
 var mocha = require('mocha')
+var consts = require('./consts')
 var coverage = require('./coverage');
 coverage.hookRequire();
 
-var selective = {
-  depsFile: './.testdeps_.json',
+var selective = {  
   depsTree: {},
   testsToRun: {},
 
@@ -16,13 +16,13 @@ var selective = {
   },
 
   loadDepsTree: function() {
-    if (fs.existsSync(this.depsFile)) {
-      this.depsTree = JSON.parse(fs.readFileSync(this.depsFile))  
+    if (fs.existsSync(consts.depsFile)) {
+      this.depsTree = JSON.parse(fs.readFileSync(consts.depsFile))  
     }
   },
 
   saveDepsTree: function() {
-    fs.writeFileSync(this.depsFile, JSON.stringify(this.depsTree))
+    fs.writeFileSync(consts.depsFile, JSON.stringify(this.depsTree))
   },
 
   cleanCoverageCounts: function() {
@@ -57,8 +57,9 @@ var selective = {
   },
 
   loadChangedFiles: function() {
-    var changedFiles = {}    
-    var diff = execSync.stdout('git status');
+    var changedFiles = {}   
+    //using env var is good for testing of the test-select library 
+    var diff = process.env['gitstatus'] || execSync.stdout('git status');
     var rePattern = new RegExp(/(modified|deleted|added):\s*(.*)/g);
     var match = rePattern.exec(diff)
     while (match!=null) {     

@@ -1,6 +1,6 @@
 
 var b = require('./b')
-
+ 
 exports.a1 = function() {
    b.b1()
 }
