@@ -6,11 +6,10 @@ var assert = require('assert')
 describe('selective test execution', function(){  
     it('should only run tests that depend on changed code', function(){
 
-      var runTests = function() {
-         return execSync.stdout('./node_modules/mocha/bin/mocha ./tests/aut/aut_test.js')
-      }
-
-      process.env['gitstatus'] = ''
+      var runTests = function(gitstatus) {
+         gitstatus = gitstatus || ''         
+         return execSync.stdout('gitstatus="' + gitstatus + '" ./node_modules/mocha/bin/mocha ./tests/aut/aut_test.js')
+      }    
 
       if (fs.existsSync(consts.depsFile)) {
          fs.unlinkSync(consts.depsFile)
@@ -28,21 +27,13 @@ describe('selective test execution', function(){
 
       results = runTests()
 
-      console.log('***')
-      console.log(results)
-      console.log('***')
-
       assert(results.indexOf('0 tests complete')!=-1, 'expected no tests to run because no code changes have been made')
-
-
-      process.env['gitstatus'] = 'modified:   tests/aut/c.js'
       
       for (var i=0; i<2; i++) {
-         results = runTests()
-         assert(results.indexOf('2 tests complete')!=-1, 'expected no tests to run because no code changes have been made')
+         results = runTests('modified:   tests/aut/c.js')    
+         assert(results.indexOf('2 tests complete')!=-1, 'expected 2 tests to run because c.js has changed')
       }
-
-      process.env['gitstatus'] = ''
+      
       results = runTests()
       assert(results.indexOf('0 tests complete')!=-1, 'expected no tests to run because no code changes have been made')
       
