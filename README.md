@@ -5,7 +5,7 @@ Make testing 10x times faster by running only the tests affected by changed code
 
 ## What is selective test execution?
 
-It means running just the relevant subset of your tests instead of all of them. For example, if you have 200 tests, and 10 of them are related to some feature, then if you make a change to this feature you should run just the 10 tests and not the whole 200. test-select automatically chooses the relevant tests based on [istanbul](https://github.com/gotwarlost/istanbul) code coverage reports. All this is done for you behind the scenes and you can work normally with just Mocha.
+Selective test execution means running just the relevant subset of your tests instead of all of them. For example, if you have 200 tests, and 10 of them are related to some feature, then if you make a change to this feature you should run only the 10 tests and not the whole 200. test-select automatically chooses the relevant tests based on [istanbul](https://github.com/gotwarlost/istanbul) code coverage reports. All this is done for you behind the scenes and you can work normally with just Mocha.
 
 For more information visit [my blog](http://webservices20.blogspot.com/) or [my twitter](https://twitter.com/YaronNaveh).
 
@@ -25,17 +25,17 @@ For more information visit [my blog](http://webservices20.blogspot.com/) or [my 
     $> npm install test-creep
 `````
 
-4. When you run mocha specify to run the special test first.js before all other tests
+4. When you run mocha specify to run the special test 'first.js' before all other tests:
 `````
     $> ./node_moduels/mocha/bin/mocha ./node_modules/test-creep/first.js ./tests
 `````
-   first.js is bundled with test-select and monkey patchs mocha with required the instrumentation (via [istanbul](https://github.com/gotwarlost/istanbul)).
+   first.js is bundled with test-select and monkey patchs mocha with the required instrumentation (via [istanbul](https://github.com/gotwarlost/istanbul)).
 
 In addition, it is recommended to add .testdeps_.json to .gitignore (more on this file below).
 
 ## How does this work?
 
-The first time you execute the command all tests run. first.js monkey patches mocha with istanbul code coverage and tracks the coverage per test (rather than per the whole process). Then in your project root the test dependency file is created (./.testdeps_.json):
+The first time you execute the command all tests run. first.js monkey patches mocha with istanbul code coverage and tracks the coverage per test (rather than per the whole process). Based on this information test-creep creates a test dependency file in the root of your project (.testdeps_.json). The file specifies for each test which files it uses:
 
 
 `````javascript
@@ -55,17 +55,19 @@ The first time you execute the command all tests run. first.js monkey patches mo
 
 `````
 
-Next time you run the test (assuming you add first.js to the command) test-creep runs 'git status' to see which files were added/deleted/modified since last commit. Then test-creep instructs mocha to only run tests that have dependency in changed files. In the example above, if you have uncommited changes only to lib/exceptions.js, then only the first test will be executed.
+Next time you run the tests (assuming you add first.js to the command) test-creep runs 'git status' to see which files were added/deleted/modified since last commit. Then test-creep searches the dependency file to see which tesst may be affected and instructs mocha to only run these tests. In the example above, if you have uncommited changes only to lib/exceptions.js, then only the first test will be executed.
 
-At any moment you can run mocha without first.js in which case all tests and not just relevant ones will run.
+At any moment you can run mocha without the 'first.js' parameter in which case all tests and not just relevant ones will run.
 
 
-## limitations
-* Dependency between test and code is captured at file and not function granularity. So sometimes test-select can run more tests than actually requiered (there is no harm in that).
+## Limitations
+* Dependency between test and code is captured at file and not function granularity. So sometimes test-select can run more tests than actually requiered (though there is no harm in that).
 
 * test-select cannot detect changes in global contexts. For example, if you have a one time global initialization of a dictionary, and some tests use this dictionary, then test-select will not mark these tests as dirty if there is a change in the initialization code. 
 
-* If you have a test suite that runs super fast (< 2 seconds) then test-select will probably add more overhead than help. test-select sweet spot is in long running test suites, though whenever tests run for more than a couple of seconds it can save you time.
+* If you have a test suite that runs super fast (< 2 seconds) then test-select will probably add more overhead than help. test-select sweet spot is in long running test suites, though it can be helpfull even if tests run just a few seconds too.
+
+* Tests should have unique names even if they reside in different files/suites.
 
 ## More information
 For more information visit [my blog](http://webservices20.blogspot.com/) or [my twitter](https://twitter.com/YaronNaveh).

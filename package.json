@@ -1,6 +1,6 @@
 {
     "name": "test-creep",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Selective test execution",
     "engines": { "node": ">=0.4.0" },
     "author": "Yaron Naveh (yaronn01@gmail.com, http://webservices20.blogspot.com/)",
