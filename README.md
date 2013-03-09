@@ -1,6 +1,6 @@
 # Test-Creep - Node.js selective test execution
 
-Run only the tests affected by changed code. **Seamlessly** integrates with [Mocha](http://visionmedia.github.com/mocha/) (more frameworks coming soon).
+Run only the tests affected by changed code. Seamlessly integrates with [Mocha](http://visionmedia.github.com/mocha/) (more frameworks coming soon).
 
 
 ## What is selective test execution?
@@ -29,8 +29,7 @@ For more information visit [my blog](http://webservices20.blogspot.com/) or [my 
 `````
     $> ./node_moduels/mocha/bin/mocha ./node_modules/test-creep/first.js ./tests
 `````
-
-first.js is bundled with test-select and monkey patchs mocha with required instrumentation.
+   first.js is bundled with test-select and monkey patchs mocha with required instrumentation.
 
 5. It is recommended to add ./.testdeps_.json to .gitignore (more on this file below)
 
