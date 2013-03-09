@@ -58,7 +58,7 @@ function hookRequire(verbose) {
         */
         var res = file.indexOf("node_modules")==-1
         var what = res ? 'Hooking ' : 'NOT hooking '
-        console.log(what + file)
+        if (verbose) console.log(what + file)
         return res
 
     }, transformFn = instrumenter.instrumentSync.bind(instrumenter);
