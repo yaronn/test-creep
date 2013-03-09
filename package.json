@@ -20,6 +20,6 @@
         "type" :  "MIT License",
         "url" :   "http://www.opensource.org/licenses/mit-license.php" }],
     "scripts":    {
-        "test": "./node_modules/mocha/bin/mocha first.js ./tests"
+        "test": "./node_modules/mocha/bin/mocha ./tests"
     }
 }
