@@ -5,7 +5,7 @@ var assert = require('assert')
 
 describe('selective test execution', function(){  
     it('should only run tests that depend on changed code', function(){
-
+      
       var runTests = function(gitstatus) {
          gitstatus = gitstatus || ''         
          return execSync.stdout('gitstatus="' + gitstatus + '" ./node_modules/mocha/bin/mocha ./tests/aut/aut_test.js')
