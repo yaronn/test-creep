@@ -116,7 +116,6 @@ var selective = {
 
 
 selective.log('starting selective execution')
-if (process.argv.indexOf('--sel')==-1) return
 selective.verbose = process.argv.indexOf('--verbose')!=-1
 coverage.hookRequire(selective.verbose);
 selective.init()

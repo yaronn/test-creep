@@ -75,7 +75,7 @@ describe('selective test execution', function() {
 
 var runTests = function(file, gitstatus) {
    gitstatus = gitstatus || ' '  
-   var cmd = 'gitstatus="' + gitstatus + '" ./node_modules/mocha/bin/mocha ./first.js ./tests/aut/' + file + ' --sel'   
+   var cmd = 'gitstatus="' + gitstatus + '" ./node_modules/mocha/bin/mocha ./first.js ./tests/aut/' + file  
    var res = execSync.stdout(cmd)   
    return res
 }  
