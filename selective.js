@@ -45,11 +45,11 @@ var selective = {
     selective.log('coverage report clean')
   },
 
-  updateCoverageCounts: function(test) {    
+  updateCoverageCounts: function(test) {        
     selective.log('updating coverage count for test '+test.title+'...')
     var coverage = this.getCurrentCoverage()              
     selective.log('coverage for test:\n' + JSON.stringify(coverage, null, 4))    
-    this.depsTree[test.title] = coverage    
+    this.depsTree[test.title] = coverage        
     selective.log('total coverage:\n' + JSON.stringify(this.depsTree, null, 4))    
   },
 
@@ -60,7 +60,7 @@ var selective = {
 
   getCurrentCoverage: function() {    
     if (typeof __coverage__ == 'undefined') return
-    selective.log('current coverage:\n' + JSON.stringify(__coverage__, null, 4))
+    //selective.log('current coverage:\n' + JSON.stringify(__coverage__, null, 4))
     var res = []
     for (var file in __coverage__) {
       for (var line in __coverage__[file].s) {
@@ -77,7 +77,8 @@ var selective = {
 
   loadChangedFiles: function() {
     selective.log('loading changed files...')    
-    var changedFiles = {}   
+    selective.log('process.env[gitstatus]: ' + process.env['gitstatus'])
+    var changedFiles = {}
     //using env var is good for testing of the test-select library 
     var diff = process.env['gitstatus'] || execSync.stdout('git status');
     selective.log('diff is:\n' + diff)
