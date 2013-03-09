@@ -1,6 +1,6 @@
-# Test-Creep - Node.js selective test execution
+# Test-Creep - Node.js Selective Test Execution
 
-Run only the tests affected by changed code. Seamlessly integrates with [Mocha](http://visionmedia.github.com/mocha/) (more frameworks coming soon).
+Make testing 10x times faster by running only the tests affected by changed code. Seamlessly integrated with [Mocha](http://visionmedia.github.com/mocha/) (more frameworks coming soon).
 
 
 ## What is selective test execution?
