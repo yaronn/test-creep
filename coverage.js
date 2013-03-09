@@ -50,12 +50,16 @@ function addInstrumentCandidate(file) {
 function hookRequire(verbose) {
 
     var matchFn = function (file) {
+        /*
         var match = fileMap[file],
             what = match ? 'Hooking' : 'NOT hooking';
         if (verbose) { console.log(what + file); }
-        //return match;
-
-        return file.indexOf("node_modules")==-1
+        return match;
+        */
+        var res = file.indexOf("node_modules")==-1
+        var what = res ? 'Hooking ' : 'NOT hooking '
+        console.log(what + file)
+        return res
 
     }, transformFn = instrumenter.instrumentSync.bind(instrumenter);
 
