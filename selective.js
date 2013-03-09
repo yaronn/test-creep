@@ -22,7 +22,7 @@ var selective = {
   },
 
   saveDepsTree: function() {
-    fs.writeFileSync(consts.depsFile, JSON.stringify(this.depsTree))
+    fs.writeFileSync(consts.depsFile, JSON.stringify(this.depsTree, null, 4))
   },
 
   cleanCoverageCounts: function() {

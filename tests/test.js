@@ -21,7 +21,7 @@ describe('selective test execution', function(){
       assert(fs.existsSync(consts.depsFile), 'expected ' + consts.depsFile + ' to exist')
       var deps = fs.readFileSync(consts.depsFile)
       assert.equal(deps
-         , '{"should show a,b,c,e":["tests/aut/a.js","tests/aut/b.js","tests/aut/c.js","tests/aut/e.js"],"should show a,b,c,e again":["tests/aut/a.js","tests/aut/b.js","tests/aut/c.js","tests/aut/e.js"],"should show a,b,d,e":["tests/aut/a.js","tests/aut/b.js","tests/aut/e.js","tests/aut/d.js"]}'
+         , JSON.stringify({"should show a,b,c,e":["tests/aut/a.js","tests/aut/b.js","tests/aut/c.js","tests/aut/e.js"],"should show a,b,c,e again":["tests/aut/a.js","tests/aut/b.js","tests/aut/c.js","tests/aut/e.js"],"should show a,b,d,e":["tests/aut/a.js","tests/aut/b.js","tests/aut/e.js","tests/aut/d.js"]}, null, 4)
          , 'deps file does not contain expected content')
 
 
