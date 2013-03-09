@@ -27,7 +27,7 @@ For more information visit [my blog](http://webservices20.blogspot.com/) or [my 
 
 4. When you run mocha specify to run the special test 'first.js' before all other tests:
 `````
-    $> ./node_moduels/mocha/bin/mocha ./node_modules/test-creep/first.js ./tests
+    $> ./node_modules/mocha/bin/mocha ./node_modules/test-creep/first.js ./tests
 `````
    first.js is bundled with test-creep and monkey patchs mocha with the required instrumentation (via [istanbul](https://github.com/gotwarlost/istanbul)).
 
