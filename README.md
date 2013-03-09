@@ -10,9 +10,9 @@ It means running just the relevant subset of your tests instead of all of them. 
 For more information visit [my blog](http://webservices20.blogspot.com/) or [my twitter](https://twitter.com/YaronNaveh).
 
 
-## Usage
+## Installation and Usage
 
-1. You should use [Mocha](http://visionmedia.github.com/mocha/) in your project to run tests. You should use git as source control.
+1. You should use [Mocha](http://visionmedia.github.com/mocha/) in your project to run tests. You should use git as a source control.
 
 2. You need to have Mocha installed locally and run it locally rather than globally:
 `````
@@ -25,13 +25,13 @@ For more information visit [my blog](http://webservices20.blogspot.com/) or [my 
     $> npm install test-creep
 `````
 
-4. When you run mocha specify to run a special test before all other tests
+4. When you run mocha specify to run the special test first.js before all other tests
 `````
     $> ./node_moduels/mocha/bin/mocha ./node_modules/test-creep/first.js ./tests
 `````
-   first.js is bundled with test-select and monkey patchs mocha with required instrumentation.
+   first.js is bundled with test-select and monkey patchs mocha with required the instrumentation (via [istanbul](https://github.com/gotwarlost/istanbul)).
 
-5. It is recommended to add ./.testdeps_.json to .gitignore (more on this file below)
+In addition, it is recommended to add .testdeps_.json to .gitignore (more on this file below).
 
 ## How does this work?
 
