@@ -1,5 +1,5 @@
 ## test-creep
-Node.js selective tests execution. *Seamlessly* integrates with [Mocha](http://visionmedia.github.com/mocha/) (more frameworks coming soon).
+Node.js selective test execution. **Seamlessly** integrates with [Mocha](http://visionmedia.github.com/mocha/) (more frameworks coming soon).
 
 
 ## What is selective test execution?
@@ -14,18 +14,23 @@ For more information visit [my blog](http://webservices20.blogspot.com/) or [my 
 1. You should use [Mocha](http://visionmedia.github.com/mocha/) in your project to run tests. You should use git as source control.
 
 2. You need to have Mocha installed locally and run it locally rather than globally:
-    
+`````    
     $> npm install mocha
-
+`````
+`````
     $> ./node_moduels/mocha/bin/mocha ./tests
+`````
 
 3. You need to install test-creep:
 
+`````
     $> npm install test-creep
+`````
 
 4. When you run mocha specify to run a special test before all other tests
-
+`````
     $> ./node_moduels/mocha/bin/mocha ./node_modules/test-creep/first.js ./tests
+`````
 	
 first.js is bundled with test-select and monkey patchs mocha with required instrumentation.
 
@@ -66,4 +71,5 @@ At any moment you can run mocha without first.js in which case all tests and not
 
 * If you have a test suite that runs super fast (< 2 seconds) then test-select will probably add more overhead than help. test-select sweet spot is in long running test suites, though whenever tests run for more than a couple of seconds it can save you time.
 
+## More information
 For more information visit [my blog](http://webservices20.blogspot.com/) or [my twitter](https://twitter.com/YaronNaveh).
