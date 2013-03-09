@@ -1,6 +1,6 @@
 var execSync = require('execSync');
 var fs = require('fs');
-var consts = require('../consts')
+var consts = require('../lib/consts')
 var assert = require('assert')
 
 describe('selective test execution', function() {  

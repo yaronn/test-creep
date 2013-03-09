@@ -1,1 +1,1 @@
-require("./selective")
+require("./lib/selective")

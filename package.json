@@ -1,5 +1,5 @@
 {
-    "name": "test-select",
+    "name": "test-creep",
     "version": "0.0.1",
     "description": "Selective test execution",
     "engines": { "node": ">=0.4.0" },
@@ -13,14 +13,13 @@
      },
     "repository" : { 
         "type":"git", 
-        "url":"https://github.com/yaronn/test-select.git" },
-    "main": "./selective.js",
+        "url":"https://github.com/yaronn/test-select.git" },    
     "directories": { "lib": "./lib" },
     "keywords": ["test", "testing", "selective test execution"],
     "licenses": [{ 
         "type" :  "MIT License",
         "url" :   "http://www.opensource.org/licenses/mit-license.php" }],
     "scripts":    {
-        "test": "./node_modules/mocha/bin/mocha tests.js ./test/tests.js"
+        "test": "./node_modules/mocha/bin/mocha first.js ./tests"
     }
 }
