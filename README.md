@@ -61,7 +61,7 @@ At any moment you can run mocha without the 'first.js' parameter in which case a
 
 
 ## When to use test-creep
-test-creep sweet spot is in long running test suites, where it can save many seconds and minutes each time you run tests. If you have a test suite that runs super fast (< 2 seconds) then test-creep will probably add more overhead than help. However when ever tests run more than that test-creep can save you time.
+test-creep sweet spot is in long running test suites, where it can save many seconds or minutes each time you run tests. If you have a test suite that runs super fast (< 2 seconds) then test-creep will probably add more overhead than help. However whenever tests run for more than that test-creep can save you time.
 
 
 ## Limitations
