@@ -1,6 +1,6 @@
-## test-creep - Node.js selective test execution
+# Test-Creep - Node.js selective test execution
 
-**Seamlessly** integrates with [Mocha](http://visionmedia.github.com/mocha/) (more frameworks coming soon).
+Run only the tests affected by changed code. **Seamlessly** integrates with [Mocha](http://visionmedia.github.com/mocha/) (more frameworks coming soon).
 
 
 ## What is selective test execution?
@@ -21,7 +21,6 @@ For more information visit [my blog](http://webservices20.blogspot.com/) or [my 
 `````
 
 3. You need to install test-creep:
-
 `````
     $> npm install test-creep
 `````
