@@ -53,6 +53,11 @@ var selective = {
     selective.log('total coverage:\n' + JSON.stringify(this.depsTree, null, 4))    
   },
 
+  removeFromCoverage: function(test) {
+    selective.log('removing coverage count for test '+test.title+'...')
+    delete this.depsTree[test.title]
+  },
+
   getCurrentCoverage: function() {    
     if (typeof __coverage__ == 'undefined') return
     selective.log('current coverage:\n' + JSON.stringify(__coverage__, null, 4))
@@ -187,9 +192,13 @@ mocha.Runner = function (suite) {
       selective.cleanCoverageCounts() 
       selective.log('start run test:\n' + test.title)    
    })
-   runner.on('test end', function(test) {          
+   runner.on('pass', function(test) {          
       selective.updateCoverageCounts(test)            
-      selective.log('end run test:\n' + test.title)    
+      selective.log('end run test (pass):\n' + test.title)    
+   })
+   runner.on('fail', function(test) {          
+      selective.removeFromCoverage(test)            
+      selective.log('end run test (fail):\n' + test.title)    
    })
 
    return runner
