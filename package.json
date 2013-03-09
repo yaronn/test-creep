@@ -13,7 +13,7 @@
      },
     "repository" : { 
         "type":"git", 
-        "url":"https://github.com/yaronn/test-select.git" },    
+        "url":"https://github.com/yaronn/test-creep.git" },    
     "directories": { "lib": "./lib" },
     "keywords": ["test", "testing", "selective test execution"],
     "licenses": [{ 
