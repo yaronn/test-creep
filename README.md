@@ -79,3 +79,7 @@ You can also delete .testdeps_.json if you wish test-creep to reinitialize its c
 
 ## More information
 For more information visit [my blog](http://webservices20.blogspot.com/) or [my twitter](https://twitter.com/YaronNaveh).
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/yaronn/test-creep/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
