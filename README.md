@@ -76,6 +76,8 @@ test-creep sweet spot is in long running test suites, where it can save many sec
 At any moment you can run mocha without the 'first.js' parameter in which case mocha runs all tests as normal.
 You can also delete .testdeps_.json if you wish test-creep to reinitialize its cache for any reason.
 
+## License
+MIT
 
 ## More information
 For more information visit [my blog](http://webservices20.blogspot.com/) or [my twitter](https://twitter.com/YaronNaveh).
