@@ -1,6 +1,6 @@
 # Test-Creep - Node.js Selective Test Execution
 
-Make testing 10x times faster by running only the tests affected by changed code. Seamlessly integrates with [Mocha](http://visionmedia.github.com/mocha/) so you work as normal (more frameworks coming soon).
+Make testing 10x times faster by running only the tests affected by changed code. Seamlessly integrates with [Mocha](http://mochajs.org/) so you work as normal (more frameworks coming soon).
 
 
 ## What is selective test execution?
@@ -12,7 +12,7 @@ For more information visit [my blog](http://webservices20.blogspot.com/) or [my 
 
 ## Installation and usage
 
-1. You should use [Mocha](http://visionmedia.github.com/mocha/) in your project to run tests. You should use git as a source control.
+1. You should use [Mocha](http://mochajs.org/) in your project to run tests. You should use git as a source control.
 
 2. You need to have Mocha installed locally and run it locally rather than globally:
 `````
